@@ -1,2 +1,2 @@
 # E-commerce-ERP
-EI Project
+EI Project for ADYPU
