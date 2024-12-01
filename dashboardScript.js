@@ -69,7 +69,6 @@ function displaySellerDashboard() {
   displayProductList();
 }
 
-// Update the displayProductList function to use the custom image URL and add remove button:
 function displayProductList() {
   const productList = document.getElementById("product-list");
   productList.innerHTML = products
@@ -308,12 +307,10 @@ function incrementProductClicks(productId) {
   localStorage.setItem("products", JSON.stringify(products));
 }
 
-// Delivery Dashboard
 function displayDeliveryDashboard() {
   window.location.href = "http://127.0.0.1:5500/E-commerce-ERP/map.html";
 }
 
-// Admin Dashboard
 function displayAdminDashboard() {
   const container = document.getElementById("dashboard-container");
   container.innerHTML = `
@@ -326,7 +323,6 @@ function displayAdminDashboard() {
         <div id="login-details"></div>
     `;
 
-  // Display products
   document.getElementById("admin-product-list").innerHTML = products
     .map(
       (product) => `
