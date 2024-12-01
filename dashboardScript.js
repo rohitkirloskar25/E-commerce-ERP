@@ -14,21 +14,30 @@ function logActivity(message) {
 function displaySellerDashboard() {
     const container = document.getElementById('dashboard-container');
     container.innerHTML = `
-        <h2>Seller Dashboard</h2>
-        <form id="product-form">
-            <label for="product-brand">Brand:</label>
-            <input type="text" id="product-brand" required>
-            <label for="product-item">Item:</label>
-            <input type="text" id="product-item" required>
-            <label for="product-description">Description:</label>
-            <textarea id="product-description" required></textarea>
-            <label for="product-price">Price:</label>
-            <input type="number" id="product-price" required>
-            <button type="submit">Add Product</button>
-        </form>
-        <h3>My Products</h3>
-        <div id="product-list"></div>
-    `;
+    <h2 class="text-xl font-semibold mb-4">Seller Dashboard</h2>
+    <form id="product-form" class="space-y-4">
+        <div>
+            <label for="product-brand" class="block text-sm font-medium text-gray-700">Brand:</label>
+            <input type="text" id="product-brand" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+        </div>
+        <div>
+            <label for="product-item" class="block text-sm font-medium text-gray-700">Item:</label>
+            <input type="text" id="product-item" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+        </div>
+        <div>
+            <label for="product-description" class="block text-sm font-medium text-gray-700">Description:</label>
+            <textarea id="product-description" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+        </div>
+        <div>
+            <label for="product-price" class="block text-sm font-medium text-gray-700">Price:</label>
+            <input type="number" id="product-price" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-500">Add Product</button>
+    </form>
+    <h3 class="text-lg font-semibold mt-6">My Products</h3>
+    <div id="product-list" class="space-y-4 mt-4"></div>
+`;
+
 
     document.getElementById('product-form').addEventListener('submit', (e) => {
         e.preventDefault();
@@ -51,39 +60,29 @@ function displayProductList() {
     const productList = document.getElementById('product-list');
     productList.innerHTML = products
         .map(
-            (product) => `
-            <div>
-                <h4>${product.brand} - ${product.item}</h4>
-                <p>${product.description}</p>
-                <p>Price: $${product.price.toFixed(2)}</p>
-                <p>Clicks: ${product.clicks}</p>
+            (product, index) => `
+            <div class="product-card">
+                <img src="https://source.unsplash.com/random/300x200?sig=${index}&clothes,accessories" alt="${product.item}" />
+                <div class="product-card-body">
+                    <h4>${product.brand} - ${product.item}</h4>
+                    <p>${product.description}</p>
+                    <p class="price">$${product.price.toFixed(2)}</p>
+                </div>
             </div>`
         )
         .join('');
 }
 
-// Buyer Dashboard
 function displayBuyerDashboard() {
     const container = document.getElementById('dashboard-container');
     container.innerHTML = `
-        <h2>Buyer Dashboard</h2>
-        <div id="product-list"></div>
-        <h3>My Cart</h3>
-        <div id="cart-list"></div>
+        <h2 class="text-2xl font-bold mb-4">Buyer Dashboard</h2>
+        <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        <h3 class="text-xl font-bold mt-8">My Cart</h3>
+        <div id="cart-list" class="mt-4"></div>
     `;
 
-    const productList = document.getElementById('product-list');
-    productList.innerHTML = products
-        .map(
-            (product) => `
-            <div>
-                <h4>${product.brand} - ${product.item}</h4>
-                <p>${product.description}</p>
-                <p>Price: $${product.price.toFixed(2)}</p>
-                <button class="add-to-cart-btn" data-product-id="${product.id}">Add to Cart</button>
-            </div>`
-        )
-        .join('');
+    displayProductList();
 
     document.querySelectorAll('.add-to-cart-btn').forEach((button) => {
         button.addEventListener('click', () => {
@@ -95,6 +94,7 @@ function displayBuyerDashboard() {
 
     displayCart();
 }
+
 
 function addToCart(productId) {
     cart.push(productId);
@@ -123,13 +123,8 @@ function incrementProductClicks(productId) {
 
 // Delivery Dashboard
 function displayDeliveryDashboard() {
-    const container = document.getElementById('dashboard-container');
-    container.innerHTML = `
-        <h2>Delivery Dashboard</h2>
-        <div id="map" style="width: 100%; height: 400px; background: #ddd;">
-            Map Placeholder (Google Maps API can be integrated here)
-        </div>
-    `;
+    window.location.href="http://127.0.0.1:5500/E-commerce-ERP/map.html"
+    
 }
 
 // Admin Dashboard

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Map</title>
+    <style>
+        /* Make the map fill the viewport */
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center; margin-top: 20px;">Delivery Map</h2>
+    <div id="map"></div>
+
+    <!-- Include Google Maps API -->
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            const mapOptions = {
+                center: { lat: 18.616754, lng: 73.915615 }, // Coordinates of New York City
+                zoom: 10, // Zoom level
+            };
+
+            // Create the map object
+            const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            // Add a marker to the map
+            new google.maps.Marker({
+                position: { lat: 18.616754, lng: 73.915615 },
+                map: map,
+                title: "New York City",
+            });
+        }
+    </script>
+
+    <!-- Replace YOUR_API_KEY with your Google Maps API key -->
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADYGK8hTUgLhAVk5GqYNZWdFNhCMCdd9Q&callback=initMap">
+    </script>
+</body>
+</html>
