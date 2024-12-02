@@ -1,85 +1,169 @@
 /* General Reset */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #f9fafb;
+  color: #374151;
+  box-sizing: border-box;
 }
 
-/* Login Container */
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header */
+header {
+  background-color: #3b82f6;
+  padding: 1rem;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Dashboard Layout */
+#dashboard-container {
+  padding: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Product Card */
+.product-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card img {
+  width: 100%;
+  object-fit: cover;
+  max-height: 200px;
+}
+
+.product-card-body {
+  padding: 1rem;
+  text-align: center;
+}
+
+.product-card-body h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.product-card-body p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-card-body .price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #10b981;
+}
+
+.product-card-body button {
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.product-card-body button:hover {
+  background-color: #2563eb;
+}
+
 .login-container {
-    background-color: white;
-    width: 300px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
 }
 
 .login-container h2 {
-    margin-bottom: 20px;
-    color: #6200ea;
-    font-size: 24px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 28px;
 }
 
-.login-container label {
-    font-size: 14px;
-    color: #555;
-    display: block;
-    text-align: left;
-    margin-bottom: 5px;
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.login-container input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-    box-sizing: border-box;
+label {
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
-.login-container input:focus {
-    border-color: #6200ea;
-    outline: none;
-    box-shadow: 0 0 5px rgba(98, 0, 234, 0.5);
+input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
 }
 
 #login-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #6200ea;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background: #667eea;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
 #login-btn:hover {
-    background-color: #5200d1;
+  background: #5a6fd6;
 }
 
 #error-message {
-    color: #e74c3c;
-    font-size: 14px;
-    margin-top: 10px;
-    visibility: hidden; /* Set visibility based on script actions */
+  color: #e53e3e;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 15px;
 }
 
-/* Responsive Design */
-@media (max-width: 400px) {
-    .login-container {
-        width: 90%;
-        padding: 15px;
-    }
+/* Add some responsiveness */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 30px;
+  }
+
+  .login-container h2 {
+    font-size: 24px;
+  }
 }

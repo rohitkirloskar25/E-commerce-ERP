@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delivery Tracking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      #map {
+        height: calc(100vh - 120px);
+        width: 100%;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-center">
+    <h1 class="font-bold">Directions for your delivery</h1>
+    <div class="container mx-auto p-4">
+      <div class="bg-white rounded-lg shadow-lg p-4">
+        <div id="map"></div>
+      </div>
+    </div>
+
+    <script>
+      function initMap() {
+        // idharr map bana nahe hai
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 12,
+          center: { lat: 18.616754, lng: 73.915615 },
+        });
+
+        // dono points bata diye for delivery
+        const pointA = { lat: 18.616754, lng: 73.915615 }; // Starting point
+        const pointB = { lat: 18.626754, lng: 73.925615 }; // Destination
+
+        const markerA = new google.maps.Marker({
+          position: pointA,
+          map: map,
+          title: "Point A",
+        });
+
+        const markerB = new google.maps.Marker({
+          position: pointB,
+          map: map,
+          title: "Point B",
+        });
+
+        const directionsService = new google.maps.DirectionsService();
+        const directionsRenderer = new google.maps.DirectionsRenderer({
+          map: map,
+          suppressMarkers: true, // This will hide default markers
+        });
+
+        const request = {
+          origin: pointA,
+          destination: pointB,
+          travelMode: "DRIVING",
+        };
+
+        directionsService.route(request, function (response, status) {
+          if (status === "OK") {
+            directionsRenderer.setDirections(response);
+          }
+        });
+      }
+    </script>
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADYGK8hTUgLhAVk5GqYNZWdFNhCMCdd9Q&callback=initMap"
+    ></script>
+  </body>
+</html>
